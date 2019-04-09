@@ -35,6 +35,7 @@ public class Temperatures {
         temps[3][5] = 74;
         temps[3][6] = 72;
 
+
         for (int row = 0; row < 4; row++) {
             String[] times = {"7 AM: ", "3 PM: ", "7 PM: ", "3 AM: "};
             System.out.print(times[row] + " ");
@@ -43,56 +44,45 @@ public class Temperatures {
             }
             System.out.println();
         }
+        System.out.println(" ");
+
         System.out.println("Based on that data, the following are the average temperatures for the week.");
 
-        int sum = 0;
-        for (int column = 0; column < temps.length; column++) {
+        int sum;
+        for (int column = 0; column < temps[0].length; column++) {
+            String[] days = {"Sun: ", "Mon: ", "Tue: ", "Wed: ", "Thu: ", "Fri: ", "Sat: "};
+            System.out.print(days[column]);
+            sum = 0;
             for (int row = 0; row < temps.length; row++) {
-                for (column = 0; column < temps.length; column++) {
-                    sum += (temps[row][column]);
-                    
-
-
-                }
-                int average = sum / temps.length;
-                System.out.println(average);
-
+                sum += (temps[row][column]);
             }
-            for (column = 0; column < temps.length; column++) {
-                String[] days = {"Sun ", "Mon ", "Tue ", "Wed ", "Thu ", "Fri ", "Sat "};
-                System.out.print(days[column]);
-                sum = 0;
+            int average = sum / temps.length;
+            System.out.println(average);
+        }
+        System.out.println();
 
-                for (int row = 0; column < temps.length; column++) {
-                    sum += (temps[column][row]);
-
-                }
-                int average = sum / temps.length;
-                System.out.println(average);
-
+        for (int row = 0; row < temps.length; row++) {
+            String[] times = {"7 AM: ", "3 PM: ", "7 PM: ", "3 AM: "};
+            System.out.print(times[row]);
+            sum = 0;
+            for (int column = 0; column < temps.length; column++) {
+                sum += (temps[row][column]);
             }
+            int average = sum / temps.length;
+            System.out.println(average);
 
-            for (int row = 0; row < temps.length; row++) {
-                String[] times = {"7 AM: ", "3 PM: ", "7 PM: ", "3 AM: "};
-                System.out.print(times[row]);
-                sum = 0;
-
-
-                for (column = 0; column < temps.length; column++) {
-                    sum += (temps[row][column]);
-                }
-                int average = sum / temps.length;
-                System.out.println(average);
-
-
+        }
+        System.out.println(" ");
+        sum = 0;
+        int totalSum = 0;
+        for(int column = 0; column < temps.length; column++) {
+            for(int row = 0; row < temps[column].length; row++) {
+                sum+= temps[column][row];
+                totalSum++;
             }
         }
+        int average = sum / totalSum;
+        System.out.println("The final average temperature for the week was: " );
+        System.out.println("Overall: " + average);
+        }
     }
-}
-
-
-
-
-
-
-
